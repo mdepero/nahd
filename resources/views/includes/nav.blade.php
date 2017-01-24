@@ -16,8 +16,8 @@
                     
                     <!-- logo -->
                     <div class="navbar-brand">
-                        <a href="index.html" >
-                            <img src="images/logo.png" alt="">
+                        <a href="/" >
+                            <img src="{{ asset('images/nav-logo.png') }}" alt="NAHD Magnifying Glass Logo asljdf">
                         </a>
                     </div>
                     <!-- /logo -->
@@ -27,10 +27,9 @@
                     <div class="main-menu">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <a href="index.html" >Home</a>
+                                <a href="/" >Home</a>
                             </li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="service.html">Service</a></li>
+                            <li><a href="/services">Services</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span></a>
                                 <div class="dropdown-menu">

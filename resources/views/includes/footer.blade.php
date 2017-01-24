@@ -5,7 +5,8 @@
             <footer id="footer">
                 <div class="container">
                     <div class="col-md-8">
-                        <p class="copyright">Copyright: <span>2015</span> . Design and Developed by <a href="http://www.Themefisher.com">Themefisher</a></p>
+                        <p class="copyright"><span>&copy;2016 - {{ date("Y") }}</span></p>
+                        <p>Theme by <a href="http://www.Themefisher.com" target="_BLANK">Themefisher</a> | Site by <a href="http://mattdepero.com" target="_BLANK">Matt DePero</a></p>
                     </div>
                     <div class="col-md-4">
                         <!-- Social Media -->
