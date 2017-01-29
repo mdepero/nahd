@@ -52,7 +52,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
-                            <div class="block wow fadeInLeft" data-wow-delay=".3s" data-wow-duration="500ms">
+                            <div class="block wow fadeInLeft" data-wow-delay=".1s" data-wow-duration="500ms">
                                 <h2>
                                 ABOUT US
                                 </h2>
@@ -63,8 +63,8 @@
                             
                         </div>
                         <div class="col-md-6 col-sm-6">
-                            <div class="block wow fadeInRight" data-wow-delay=".3s" data-wow-duration="500ms">
-                                <h2>
+                            <div class="block wow fadeInRight" data-wow-delay=".1s" data-wow-duration="500ms">
+                                <h2 class="hidden-xs">
                                 &nbsp;
                                 </h2>
                                 <p>
@@ -75,7 +75,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 col-sm-6 col-md-offset-3 col-md-offset-3">
+                        <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3">
                             <div class="block wow fadeInUp" data-wow-delay=".3s" data-wow-duration="500ms">
                                 <img src="images/about.png" alt="House with Magnifying Glass">
                             </div>
@@ -91,19 +91,19 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
-                            <div class="block wow fadeInLeft" data-wow-delay=".3s" data-wow-duration="500ms">
+                            <div class="block wow fadeInLeft" data-wow-delay=".1s" data-wow-duration="500ms">
                                 <h2>
                                 Why US
                                 </h2>
                                 <p>
-                                    From increasing the value of your home to simply providing peace of mind, a legitmate house inspection is valuable to anyone selling, buying, or even just owning a home. Our inspectors have years of experience and training to provide ensure an accurate and fair assessment on your home amenities and integrity. While no inspection will ever be 100%, you can rest assured that our team's expertise will come as close to perfect as possible.
+                                    From increasing the value of your home to simply providing peace of mind, a legitimate house inspection is valuable to anyone selling, buying, or even just owning a home. Our inspectors have years of experience and training to provide ensure an accurate and fair assessment on your home amenities and integrity. While no inspection will ever be 100%, you can rest assured that our team's expertise will come as close to perfect as possible.
                                 </p>
                             </div>
                             
                         </div>
-                        <div class="col-md-6 col-sm-6">
-                            <div class="block wow fadeInRight" data-wow-delay=".3s" data-wow-duration="500ms">
-                                <img src="images/whyus.png" alt="House with Check Mark">
+                        <div class="col-md-6 col-sm-6 col-xs-10 col-offset-xs-1">
+                            <div class="block wow fadeInRight" data-wow-delay=".1s" data-wow-duration="500ms">
+                                <img class="img-responsive" src="images/whyus.png" alt="House with Check Mark">
                             </div>
                         </div>
                     </div>

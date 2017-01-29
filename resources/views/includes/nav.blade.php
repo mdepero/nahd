@@ -30,7 +30,7 @@
                                 <a href="/" >Home</a>
                             </li>
                             <li><a href="/services">Services</a></li>
-                            <li class="dropdown">
+                            <!--li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span></a>
                                 <div class="dropdown-menu">
                                     <ul>
@@ -48,8 +48,9 @@
                                         <li><a href="blog-right-sidebar.html">Blog Right sidebar</a></li>
                                     </ul>
                                 </div>
-                            </li>
-                            <li><a href="contact.html">Contact</a></li>
+                            </li-->
+                            <li><a href="/contact">Contact</a></li>
+                            <li><a href="/login">Log In</a></li>
                         </ul>
                     </div>
                 </nav>

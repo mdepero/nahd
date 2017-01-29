@@ -7,6 +7,10 @@
 
 @include('includes.nav')
 
+@hasSection('breadcrumbs')
+	@include('includes.header')
+@endif
+
 @yield('content')
 
 @include('includes.footer')
