@@ -33,10 +33,12 @@
                             <div class="block wow fadeInRight" data-wow-delay=".3s" data-wow-duration="500ms">
                                 <h2>&nbsp;</h2>
                                 <div class="contact-form">
-                                    <form id="contact-form" method="post" action="/" role="form">
+                                    <form id="contact-form" method="post" action="/login" role="form">
+
+                                        {{ csrf_field() }}
                         
                                         <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".5s">
-                                            <input type="text" placeholder="Your Access Key" class="form-control" name="name" id="name">
+                                            <input type="text" placeholder="Your Access Key" class="form-control" name="key" id="key">
                                         </div>
                                         <div id="submit" class="wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".7s">
                                             <input type="submit" id="contact-submit" class="btn btn-primary btn-send" value="Submit">

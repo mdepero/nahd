@@ -11,6 +11,8 @@
 	@include('includes.header')
 @endif
 
+@include('includes.errors')
+
 @yield('content')
 
 @include('includes.footer')

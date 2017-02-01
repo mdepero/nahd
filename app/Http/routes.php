@@ -23,6 +23,7 @@ Route::get('/contact', function () {
     return view('pages.contact');
 });
 
-Route::get('/login', function () {
-    return view('pages.login');
-});
+Route::get('/login', 'LoginController@showForm');
+Route::post('/login', 'LoginController@login');
+
+Route::get('/logout', 'LoginController@logout');
