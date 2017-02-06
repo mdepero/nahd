@@ -27,3 +27,6 @@ Route::get('/login', 'LoginController@showForm');
 Route::post('/login', 'LoginController@login');
 
 Route::get('/logout', 'LoginController@logout');
+
+
+Route::get('/admin', 'AdminController@dashboard');

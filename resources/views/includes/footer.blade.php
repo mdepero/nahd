@@ -2,6 +2,7 @@
             ==================================================
             Footer Section Start
             ================================================== -->
+            <hr />
             <footer id="footer">
                 <div class="container">
                     <div class="col-md-8">

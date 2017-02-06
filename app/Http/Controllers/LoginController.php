@@ -62,6 +62,6 @@ class LoginController extends Controller
     	$request->session()->forget('key');
     	$request->session()->forget('admin');
 
-    	return redirect('/');
+    	return redirect('/login')->with('message','You have successfully been logged out.'); // send a "logged out" message with it??
     }
 }
