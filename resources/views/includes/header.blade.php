@@ -10,13 +10,7 @@
                         <div class="block">
                             <h2>@yield('title')</h2>
                             <ol class="breadcrumb">
-                                <li>
-                                    <a href="/">
-                                        <i class="ion-ios-home"></i>
-                                        Home
-                                    </a>
-                                </li>
-                                <li class="active">@yield('breadcrumbs')</li>
+                                <li>@yield('breadcrumbs')</li>
                             </ol>
                         </div>
                     </div>

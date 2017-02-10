@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', 'Home')
+@section('title', '<a href="/"><i class="ion-ios-home"></i>Home</a> / Home')
 
 @section('content')
 

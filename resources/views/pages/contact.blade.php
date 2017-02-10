@@ -2,7 +2,7 @@
 
 @section('title', 'Contact')
 
-@section('breadcrumbs', 'Contact')
+@section('breadcrumbs', '<a href="/"><i class="ion-ios-home"></i>Home</a> / Contact')
 
 @section('content')
 

@@ -2,7 +2,7 @@
 
 @section('title', 'Services')
 
-@section('breadcrumbs', 'Services')
+@section('breadcrumbs', '<a href="/"><i class="ion-ios-home"></i>Home</a> / Services')
 
 @section('content')
 
@@ -51,7 +51,7 @@
                                 Tools and Methods
                                 </h2>
                                 <p>
-                                    We adhere strictly to the inspection practices laid out by the American Society of Home Inspectors (ASHI). Visit <a href="http://www.homeinspector.org/standards/default.aspx" target="_BLANK">http://www.homeinspector.org/standards/default.aspx</a> to read more.
+                                    We adhere strictly to the inspection practices laid out by the American Society of Home Inspectors (ASHI). Visit <a href="http://www.homeinspector.org/standards/default.aspx" target="_BLANK">homeinspector.org/standards/default.aspx</a> to read more.
                                 </p>
                                 <p>
                                     We utilize the most precise and technologically accurate tools available in our field ranging from radon detection devices, combustible gas detectors, and moisture meters. We will employ each device during your inspection to help eliminate as much guess work as possible.

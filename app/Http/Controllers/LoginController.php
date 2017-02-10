@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\User;
+use App\Report;
 
 class LoginController extends Controller
 {
@@ -45,7 +45,7 @@ class LoginController extends Controller
     		return redirect('/admin');
     	}else{
 
-    		if(User::where('password', $request->input('key') )->count() > 0){
+    		if(Report::where('access_key', $request->input('key') )->count() > 0){
     			$request->session()->put('key',$request->input('key'));
     			$request->session()->forget('admin');
 

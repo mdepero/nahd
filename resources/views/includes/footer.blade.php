@@ -5,11 +5,11 @@
             <hr />
             <footer id="footer">
                 <div class="container">
-                    <div class="col-md-8">
+                    <div class="col-sm-8">
                         <p class="copyright"><span>&copy;2016 - {{ date("Y") }}</span></p>
                         <p>Theme by <a href="http://www.Themefisher.com" target="_BLANK">Themefisher</a> | Site by <a href="http://mattdepero.com" target="_BLANK">Matt DePero</a></p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-sm-4">
                         <!-- Social Media -->
                         <ul class="social">
                             <li>

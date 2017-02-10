@@ -77,7 +77,18 @@ $(document).ready(function(){
         items : 5,
         autoplay: true,
 
-    })
+    });
+
+
+    $(document).on("click", ".check", function(e) {
+        var link = $(this).attr("href"); // "get" the intended link in a var
+        e.preventDefault();    
+        bootbox.confirm("Are you sure?", function(result) {    
+            if (result) {
+                document.location.href = link;  // if result, "set" the document location       
+            }    
+        });
+    });
 
 });
 

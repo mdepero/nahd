@@ -2,7 +2,7 @@
 
 @section('title', 'Web Portal')
 
-@section('breadcrumbs', 'Log In')
+@section('breadcrumbs', '<a href="/"><i class="ion-ios-home"></i>Home</a> / Log In')
 
 @section('content')
 

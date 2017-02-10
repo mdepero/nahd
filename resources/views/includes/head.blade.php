@@ -27,6 +27,7 @@
         <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
         <link rel="stylesheet" href="{{ asset('css/owl.theme.css') }}">
         <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}">
+
         <!-- template main css file -->
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
         <!-- responsive css -->
@@ -48,6 +49,7 @@
         <!-- slider js -->
         <script src="{{ asset('js/slider.js') }}"></script>
         <script src="{{ asset('js/jquery.fancybox.js') }}"></script>
+        <script src="{{ asset('js/bootbox.min.js') }}"></script>
         <!-- template main js -->
         <script src="{{ asset('js/main.js') }}"></script>
     </head>
