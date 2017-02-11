@@ -9,16 +9,16 @@ class FDescriptionArea extends Model
     
     public function options(){
 
-    	return $this->hasMany('App\FDescriptionOption');
+    	return $this->hasMany('App\FDescriptionOption', 'f_description_area_id');
     }
 
     public function section(){
 
-    	return $this->belongsTo('App\FSection');
+    	return $this->belongsTo('App\FSection','f_section_id');
     }
 
     public function descriptions(){
 
-    	return $this->hasMany('App\Description');
+    	return $this->hasMany('App\Description', 'area_id');
     }
 }

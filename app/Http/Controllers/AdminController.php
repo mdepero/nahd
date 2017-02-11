@@ -10,6 +10,8 @@ use App\Report;
 use App\FSection;
 use App\FDescriptionArea;
 use App\FConcernArea;
+use App\FDescriptionOption;
+use App\FConcernOption;
 
 class AdminController extends Controller
 {
@@ -107,5 +109,59 @@ class AdminController extends Controller
     	$fconcernarea->save();
 
     	return redirect('/admin/form/'.$secid);
+    }
+
+    public function formSectionEditDescriptionArea($secid, $id){
+
+        $fdescriptionarea = FDescriptionArea::find($id);
+
+        return view('admin.edit-form-description-area', compact('fdescriptionarea', 'secid', 'id'));
+    }
+
+    public function formSectionNewDescriptionOption(Request $request, $secid, $descid){
+
+        $fdescriptionoption = new FDescriptionOption;
+
+        $fdescriptionoption->f_description_area_id = $descid;
+
+        $fdescriptionoption->label = $request->label;
+
+        $fdescriptionoption->save();
+
+        return redirect('/admin/form/'.$secid.'/description_area/'.$descid);
+    }
+
+    public function formSectionDeleteDescriptionOption(Request $request, $secid, $descid, $id){
+
+        FDescriptionOption::destroy($id);
+
+        return redirect('/admin/form/'.$secid.'/description_area/'.$descid);
+    }
+
+    public function formSectionEditConcernArea($secid, $id){
+
+        $fconcernarea = FConcernArea::find($id);
+
+        return view('admin.edit-form-concern-area', compact('fconcernarea', 'secid', 'id'));
+    }
+
+    public function formSectionNewConcernOption(Request $request, $secid, $conid){
+
+        $fconcernoption = new FConcernOption;
+
+        $fconcernoption->f_concern_area_id = $conid;
+
+        $fconcernoption->label = $request->label;
+
+        $fconcernoption->save();
+
+        return redirect('/admin/form/'.$secid.'/concern_area/'.$conid);
+    }
+
+    public function formSectionDeleteConcernOption(Request $request, $secid, $conid, $id){
+
+        FConcernOption::destroy($id);
+
+        return redirect('/admin/form/'.$secid.'/concern_area/'.$conid);
     }
 }

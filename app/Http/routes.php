@@ -11,6 +11,12 @@
 |
 */
 
+// +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+// |                                          |
+// |        ****    PUBLIC PAGES   ****       |
+// |                                          |
+// +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+
 Route::get('/', function () {
     return view('pages.home');
 });
@@ -30,18 +36,48 @@ Route::get('/logout', 'LoginController@logout');
 
 
 
+// +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+// |                                          |
+// |         ****    ADMIN PAGE   ****        |
+// |                                          |
+// +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+
 
 Route::get( '/admin', 					'AdminController@dashboard');
+
+// +-------------------------------------+
+// |           Form Editing              |
+// +-------------------------------------+
+
 Route::get( '/admin/form', 				'AdminController@editForm');
 Route::post('/admin/form', 				'AdminController@newFormSection');
 Route::get( '/admin/form/delete/{id}', 	'AdminController@deleteFormSection');
 Route::get( '/admin/form/{id}', 	'AdminController@editFormSection');
 
 Route::post('/admin/form/{secid}/description_area',
-										'AdminController@formSectionNewDescriptionArea');
+									'AdminController@formSectionNewDescriptionArea');
 Route::get(' /admin/form/{secid}/description_area/delete/{id}',
-										'AdminController@formSectionDeleteDescriptionArea');
+									'AdminController@formSectionDeleteDescriptionArea');
 Route::post('/admin/form/{secid}/concern_area',
-										'AdminController@formSectionNewConcernArea');
+									'AdminController@formSectionNewConcernArea');
 Route::get(' /admin/form/{secid}/concern_area/delete/{id}',
-										'AdminController@formSectionDeleteConcernArea');
+									'AdminController@formSectionDeleteConcernArea');
+
+Route::get(' /admin/form/{secid}/description_area/{id}',
+									'AdminController@formSectionEditDescriptionArea');
+Route::post('/admin/form/{secid}/description_area/{descid}',
+									'AdminController@formSectionNewDescriptionOption');
+Route::get( '/admin/form/{secid}/description_area/{descid}/option/{id}/delete',
+									'AdminController@formSectionDeleteDescriptionOption');
+
+Route::get(' /admin/form/{secid}/concern_area/{id}',
+									'AdminController@formSectionEditConcernArea');
+Route::post('/admin/form/{secid}/concern_area/{conid}',
+									'AdminController@formSectionNewConcernOption');
+Route::get( '/admin/form/{secid}/concern_area/{conid}/option/{id}/delete',
+									'AdminController@formSectionDeleteConcernOption');
+
+// +-------------------------------------+
+// |          Report Editing             |
+// +-------------------------------------+
+

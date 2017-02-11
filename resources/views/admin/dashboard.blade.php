@@ -16,17 +16,18 @@
 
                     <div class="row">
 
-                        <div class="col-xs-6 col-sm-2 col-sm-push-8 col-lg-1 col-lg-push-10 text-center">
+                        <div class="col-xs-4 col-xs-offset-2 col-sm-offset-0 col-sm-2 col-sm-push-8 col-lg-1 col-lg-push-10 text-center">
 
                             <a href="/admin/new"><img src="{{asset('images/new.png')}}" class="img-responsive" alt="New Report"></a>
                         </div>
 
-                        <div class="col-xs-6 col-sm-2 col-sm-push-8 col-lg-1 col-lg-push-10 text-center">
+                        <div class="col-xs-4 col-sm-2 col-sm-push-8 col-lg-1 col-lg-push-10 text-center">
 
                             <a href="/admin/form"><img src="{{asset('images/edit.png')}}" class="img-responsive" alt="Edit Form"></a>
                         </div>
 
-                        <div class="col-sm-8 col-sm-pull-4 col-lg-10 col-lg-pull-2">
+
+                        <div class="col-xs-12 col-sm-8 col-sm-pull-4 col-lg-10 col-lg-pull-2">
                             <h2>Previous Reports</h2>
                             <table class="table table-striped">
                                 <tr><th>Address</th><th class="hidden-sm hidden-xs">Client</th><th>Report Date</th></tr>
