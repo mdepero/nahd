@@ -16,7 +16,7 @@ class CreateDescriptionsTable extends Migration
             $table->increments('id');
             $table->integer('section_id');
             $table->integer('area_id');
-            $table->string('value');
+            $table->string('value')->nullable();
             $table->timestamps();
         });
     }

@@ -9,11 +9,11 @@ class Description extends Model
     
     public function area(){
 
-    	$this->belongsTo('App\FDescriptionArea');
+    	return $this->belongsTo('App\FDescriptionArea', 'area_id');
     }
 
     public function section(){
 
-    	$this->belongsTo('App\Section');
+    	return $this->belongsTo('App\Section');
     }
 }

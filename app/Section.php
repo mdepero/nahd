@@ -12,6 +12,11 @@ class Section extends Model
     	return $this->hasMany('App\Concern');
     }
 
+    public function fsection(){
+
+    	return $this->belongsTo('App\FSection', 'f_section_id');
+    }
+
     public function descriptions(){
 
     	return $this->hasMany('App\Description');

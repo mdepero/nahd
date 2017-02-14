@@ -14,21 +14,24 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('fname');
-            $table->string('lname');
-            $table->string('caddress');
-            $table->string('ccity');
-            $table->string('cstate');
-            $table->string('czip');
-            $table->string('chome_phone');
-            $table->string('cmobile_phone');
-            $table->string('email');
-            $table->string('paddress');
-            $table->string('pcity');
-            $table->string('date_inspection');
-            $table->string('time_inspection');
-            $table->text('final_remarks');
-            $table->string('access_key');
+            $table->string('fname')->nullable();
+            $table->string('lname')->nullable();
+            $table->string('caddress')->nullable();
+            $table->string('ccity')->nullable();
+            $table->string('cstate')->nullable();
+            $table->string('czip')->nullable();
+            $table->string('chome_phone')->nullable();
+            $table->string('cmobile_phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('paddress')->nullable();
+            $table->string('pcity')->nullable();
+            $table->string('pstate')->nullable();
+            $table->string('pzip')->nullable();
+            $table->string('date_inspection')->nullable();
+            $table->string('time_inspection')->nullable();
+            $table->text('final_remarks')->nullable();
+            $table->string('access_key')->nullable();
+            $table->integer('rating')->nullable();
             $table->timestamps();
         });
     }

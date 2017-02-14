@@ -9,11 +9,11 @@ class Concern extends Model
     
     public function area(){
 
-    	$this->belongsTo('App\FConcernArea');
+    	return $this->belongsTo('App\FConcernArea', 'area_id');
     }
 
     public function section(){
 
-    	$this->belongsTo('App\Section');
+    	return $this->belongsTo('App\Section');
     }
 }

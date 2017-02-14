@@ -16,9 +16,9 @@ class CreateConcernsTable extends Migration
             $table->increments('id');
             $table->integer('section_id');
             $table->integer('area_id');
-            $table->string('item');
-            $table->string('location');
-            $table->string('urgency');
+            $table->string('item')->nullable();
+            $table->string('location')->nullable();
+            $table->string('urgency')->nullable();
             $table->timestamps();
         });
     }

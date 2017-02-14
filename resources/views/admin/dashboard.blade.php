@@ -30,9 +30,9 @@
                         <div class="col-xs-12 col-sm-8 col-sm-pull-4 col-lg-10 col-lg-pull-2">
                             <h2>Previous Reports</h2>
                             <table class="table table-striped">
-                                <tr><th>Address</th><th class="hidden-sm hidden-xs">Client</th><th>Report Date</th></tr>
+                                <tr><th>Address</th><th class="hidden-sm hidden-xs">Client</th><th>Report Date</th><th>Edit</th></tr>
                                 @foreach ($reports as $report)
-                                    <tr><td>{{ $report->paddress }}</td><td class="hidden-sm hidden-xs">{{ $report->fname }} {{ $report->lname }}</td><td>{{ $report->date_inspection }}</td></tr>
+                                    <tr><td>{{ $report->paddress }}</td><td class="hidden-sm hidden-xs">{{ $report->fname }} {{ $report->lname }}</td><td>{{ $report->date_inspection }}</td><td><a href="/admin/report/{{$report->id}}"><button class="btn btn-primary ion-edit"></button></a></td></tr>
                                 @endforeach
                             </table>
 
