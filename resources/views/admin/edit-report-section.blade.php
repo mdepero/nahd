@@ -59,7 +59,7 @@
                             <h2>Areas of Concerns</h2>
                             <table class="table">
 
-                                <tr><th>Area</th><th>Options</th><th>Item</th><th>Location</th><th>Urgency</th><th style="width:0.1%;"></th></tr>
+                                <tr><th>Area</th><th>Options</th><th style="width:17%;">Item</th><th style="width:17%;">Location</th><th style="width:17%;">Urgency</th><th style="width:0.1%;"></th></tr>
 
                                 @foreach($possible_concern_areas as $area)
 
