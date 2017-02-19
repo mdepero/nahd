@@ -107,9 +107,13 @@ $(document).ready(function(){
     $('.delete-concern').click(delete_concern);
 
 
+
     //$('input[type=text]').first().focus();
 
 });
+
+
+
 
 
 

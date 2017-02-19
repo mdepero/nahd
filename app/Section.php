@@ -12,6 +12,11 @@ class Section extends Model
     	return $this->hasMany('App\Concern');
     }
 
+    public function images(){
+
+        return $this->hasMany('App\Image');
+    }
+
     public function fsection(){
 
     	return $this->belongsTo('App\FSection', 'f_section_id');

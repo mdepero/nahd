@@ -89,3 +89,10 @@ Route::get( '/admin/report/{id}/summary',		'ReportController@editReportSummary')
 Route::post('/admin/report/{id}/summary',		'ReportController@saveReportSummary');
 Route::get( '/admin/report/{reportid}/{id}',	'ReportController@editReportSection');
 Route::post('/admin/report/{reportid}/{id}',	'ReportController@saveReportSection');
+Route::post('/admin/report/{reportid}/{id}/image',	'ReportController@addSectionImage');
+Route::get( '/admin/report/{reportid}/{secid}/image/{id}/delete',	'ReportController@deleteImage');
+
+
+
+
+Route::get( '/webportal/print/{id}',  	 'PortalController@printReport');

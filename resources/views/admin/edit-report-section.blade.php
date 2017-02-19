@@ -59,7 +59,7 @@
                             <h2>Areas of Concerns</h2>
                             <table class="table">
 
-                                <tr><th>Area</th><th>Options</th><th style="width:17%;">Item</th><th style="width:17%;">Location</th><th style="width:17%;">Urgency</th><th style="width:0.1%;"></th></tr>
+                                <tr><th>Area</th><th>Options</th><th style="width:17%;min-width: 100px;">Item</th><th style="width:17%;min-width: 100px;">Location</th><th style="width:17%;min-width: 100px;">Urgency</th><th style="width:0.1%;"></th></tr>
 
                                 @foreach($possible_concern_areas as $area)
 
@@ -134,17 +134,44 @@
                             <h2>Section Notes</h2>
                             <div class="row"><div class="col-sm-6"><textarea class="form-control" name="notes">{{$section->notes}}</textarea></div></div>
 
+                            
+
                             <h2>&nbsp;</h2>
 
                             <input type="submit" class="btn btn-primary" value="Save"> <a href="/admin/report/{{$section->report->id}}" class="btn btn-default">Cancel</a> *Note: Unsaved edits will be lost
 
                             </form>
 
+                            <hr />
+
+                            <h1>{{$section->fsection->label}} Images</h1>
+
+                            <form method="post" action="/admin/report/{{ $section->report->id }}/{{ $section->id }}/image" enctype="multipart/form-data" >
+                            {{ csrf_field() }}
+                            <div>**Any edits made to image section will delete unsaved changes above.</div><br />
+                            <p>Image to Add: <input type="file" name="image"></p>
+                            <p>Caption: <input type="text" name="caption"></p>
+                            <p><input type="submit" class="btn btn-primary" value="Upload"></p>
+                            </form>
+
+                            <table class="table">
+
+                                @foreach($section->images as $image)
+
+                                <tr id="img_{{$image->id}}">
+                                    <td style="max-width:300px;"><img src="{{$image->file_path}}" class="img-responsive"></td>
+                                    <td>{{$image->caption}}</td>
+                                    <td><a href="/admin/report/{{$section->report->id}}/{{$section->id}}/image/{{$image->id}}/delete" class="check btn btn-warning ion-trash-b img-del"></a></td>
+                                </tr>
+
+                                @endforeach
+
+                            </table>
+
                         </div>
 
                     </div>
 
-                    <div class="row">
                 </div>
             </section> <!-- /#about -->
 

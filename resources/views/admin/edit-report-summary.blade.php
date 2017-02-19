@@ -1,8 +1,8 @@
 @extends('layouts.default')
 
-@section('title', 'Report Details')
+@section('title', 'Report Summaries')
 
-@section('breadcrumbs', '<a href="/admin"><i class="ion-android-options"></i> Dashboard</a> / <a href="/admin/report/'.$report->id.'">Report</a> / Report Details')
+@section('breadcrumbs', '<a href="/admin"><i class="ion-android-options"></i> Dashboard</a> / <a href="/admin/report/'.$report->id.'">Report</a> / Report Summaries')
 
 @section('content')
 

@@ -13,6 +13,7 @@ use App\FDescriptionArea;
 use App\Description;
 use App\FConcernArea;
 use App\Concern;
+use App\Image;
 
 class ReportController extends Controller
 {
@@ -213,6 +214,49 @@ class ReportController extends Controller
     	$section->save();
 
     	return redirect('/admin/report/'.$reportid);
+
+    }
+
+    public function addSectionImage(Request $request, $reportid, $id){
+
+        if ($request->hasFile('image')) {
+
+            $image = $request->file('image');
+            $filename = $image->getClientOriginalName();
+            $extension = $image->getClientOriginalExtension();
+            $picture = date('His').$filename;
+            $destinationPath = 'uploads';
+            $image->move($destinationPath, $picture);
+            
+            $newImage = new Image;
+
+            $newImage->section_id = $id;
+
+            $newImage->caption = $request->caption;
+
+            $newImage->file_path = '/uploads/'.$picture;
+
+            $newImage->save();
+
+            return redirect('/admin/report/'.$reportid.'/'.$id);
+
+        }else{
+
+            return redirect('/admin/report/'.$reportid.'/'.$id)->withErrors(['No image attached or file too large, upload aborted.']);
+        }
+    }
+
+    public function deleteImage(Request $request, $reportid, $secid, $id){
+
+        $image = Image::find($id);
+
+        try{
+            unlink($image->file_path);
+        }catch(\Exception $e){};
+
+        $image->delete();
+
+        return redirect('/admin/report/'.$reportid.'/'.$secid);
 
     }
 }
