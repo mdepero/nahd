@@ -252,7 +252,7 @@ class ReportController extends Controller
         $image = Image::find($id);
 
         try{
-            unlink($image->file_path);
+            unlink(public_path($image->file_path));
         }catch(\Exception $e){};
 
         $image->delete();
@@ -295,7 +295,7 @@ class ReportController extends Controller
         $image = Document::find($id);
 
         try{
-            unlink($image->file_path);
+            unlink(public_path($image->file_path));
         }catch(\Exception $e){};
 
         $image->delete();
