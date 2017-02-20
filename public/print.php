@@ -1,6 +1,13 @@
 <?php
 
 
+if(!isset($_SESSION['report_access']) || $_SESSION['report_access'] != $_REQUEST['report']){
+	die('<p>Sorry, for security reasons this page can only be accessed directly from your web portal and cannot be refreshed. Please go back to your <a href="/webportal">Web Portal</a> and open your report from there. Thank you.</p>');
+}
+
+$_SESSION['report_access'] = "";
+
+
 require('pdf/fpdf.php');
 
 class PDF extends FPDF

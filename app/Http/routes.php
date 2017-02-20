@@ -87,11 +87,13 @@ Route::get( '/admin/report/{id}/details',		'ReportController@editReportDetails')
 Route::post('/admin/report/{id}/details',		'ReportController@saveReportDetails');
 Route::get( '/admin/report/{id}/summary',		'ReportController@editReportSummary');
 Route::post('/admin/report/{id}/summary',		'ReportController@saveReportSummary');
+Route::post('/admin/report/{id}/document',		'ReportController@addDocument');
+Route::get( '/admin/report/{reportid}/document/{id}/delete',	
+												'ReportController@deleteDocument');
 Route::get( '/admin/report/{reportid}/{id}',	'ReportController@editReportSection');
 Route::post('/admin/report/{reportid}/{id}',	'ReportController@saveReportSection');
 Route::post('/admin/report/{reportid}/{id}/image',	'ReportController@addSectionImage');
 Route::get( '/admin/report/{reportid}/{secid}/image/{id}/delete',	'ReportController@deleteImage');
-
 
 
 

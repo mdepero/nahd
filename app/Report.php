@@ -13,4 +13,9 @@ class Report extends Model
 
     	return $this->hasMany('App\Section');
     }
+
+    public function documents(){
+
+        return $this->hasMany('App\Document');
+    }
 }

@@ -14,6 +14,7 @@ use App\Description;
 use App\FConcernArea;
 use App\Concern;
 use App\Image;
+use App\Document;
 
 class ReportController extends Controller
 {
@@ -222,9 +223,9 @@ class ReportController extends Controller
         if ($request->hasFile('image')) {
 
             $image = $request->file('image');
-            $filename = $image->getClientOriginalName();
+            $filename = '_'.$reportid.'_'.$id.'_'.str_replace(' ', '', $request->caption);
             $extension = $image->getClientOriginalExtension();
-            $picture = date('His').$filename;
+            $picture = date('His').$filename.'.'.$extension;
             $destinationPath = 'uploads';
             $image->move($destinationPath, $picture);
             
@@ -257,6 +258,49 @@ class ReportController extends Controller
         $image->delete();
 
         return redirect('/admin/report/'.$reportid.'/'.$secid);
+
+    }
+
+    public function addDocument(Request $request, $id){
+
+        if ($request->hasFile('file')) {
+
+            $file = $request->file('file');
+            //$filename = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+            $upload = date('Y-m-d').'-'.str_replace(' ', '', $request->caption).'.'.$extension;
+            $destinationPath = 'uploads';
+            $file->move($destinationPath, $upload);
+            
+            $newDoc = new Document;
+
+            $newDoc->report_id = $id;
+
+            $newDoc->caption = $request->caption;
+
+            $newDoc->file_path = '/uploads/'.$upload;
+
+            $newDoc->save();
+
+            return redirect('/admin/report/'.$id);
+
+        }else{
+
+            return redirect('/admin/report/'.$id)->withErrors(['No file attached or file too large, upload aborted.']);
+        }
+    }
+
+    public function deleteDocument(Request $request, $reportid, $id){
+
+        $image = Document::find($id);
+
+        try{
+            unlink($image->file_path);
+        }catch(\Exception $e){};
+
+        $image->delete();
+
+        return redirect('/admin/report/'.$reportid);
 
     }
 }
