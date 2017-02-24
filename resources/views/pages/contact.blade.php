@@ -61,7 +61,7 @@
                         <div class="col-xs-6">
                             <div class="email wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".5s">
                                 <i class="ion-ios-email-outline"></i>
-                                <h5>nahd@gmail.com????</h5>
+                                <h5><a href="mailto:contact@ohiohomeinspections.net">contact@ohiohomeinspections.net</a></h5>
                             </div>
                         </div>
                         <div class="col-xs-6">

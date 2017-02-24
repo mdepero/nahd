@@ -37,7 +37,29 @@
                                 @endforeach
 
                                 <tr><td><strong>Report Summary</strong></td><td><a href="/admin/report/{{$report->id}}/summary"><button class="btn btn-primary ion-edit"></button></a></td></tr>
+
+                                <tr><td>View/Edit Access Key</td><td><button class="btn btn-warning ion-eye" id="access_key"></button></td></tr>
+
+                                <tr><td>View/Print Final Report</td><td><a target="_BLANK" href="/webportal/print/{{$report->id}}"><button class="btn btn-warning ion-eye"></button></a></td></tr>
                             </table>
+
+
+                            <script>
+
+                            $(document).ready(function(){
+                                $('#access_key').click(function(){
+                                    bootbox.prompt({
+                                        title: "User Access Key",
+                                        value: "{{$report->access_key}}",
+                                        callback: function(result){
+                                            if(result)
+                                                window.location = '/admin/report/{{$report->id}}/pass/'+result;
+                                        }
+                                    });
+                                });
+                            });
+
+                            </script>
 
                             <h1>Additional Documents</h1>
 

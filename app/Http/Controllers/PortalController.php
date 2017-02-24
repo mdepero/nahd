@@ -13,6 +13,17 @@ class PortalController extends Controller
 
         $this->middleware('user');
     }
+
+
+
+    public function showReport(Request $request) {
+
+    	if($request->session()->has('admin')) return redirect('/admin');
+
+    	$report = Report::where('access_key', session('key'))->first();
+
+    	return view('portal.dashboard', compact('report'));
+    }
 	
 	public function printReport($id){
 
@@ -27,6 +38,31 @@ class PortalController extends Controller
 
 		if(!$valid) return redirect('/contact')->withErrors(['You do not have persmission to view that page']);
 
-		return view('portal.print', compact('report'));
+		//return view('portal.print', compact('report'));
+
+
+
+
+
+
+
+
+
+
+
+
+		require(public_path('print.php'));
+
+
+
+
+
+
+
+		return $pdf->Output();;
+
+
+
+
 	}    
 }

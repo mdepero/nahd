@@ -54,7 +54,7 @@
                             <li><a href="/admin">Admin Panel</a></li>
                             <li><a href="/logout">Log Out</a></li>
                             @elseif (session('key'))
-                            <li><a href="/dashboard">Web Portal</a></li>
+                            <li><a href="/webportal">Web Portal</a></li>
                             <li><a href="/logout">Log Out</a></li>
                             @else
                             <li><a href="/login">Log In</a></li>

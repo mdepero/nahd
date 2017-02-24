@@ -18,7 +18,7 @@ class LoginController extends Controller
     	}
 
     	if($request->session()->has('key') ){
-    		return redirect('/dashboard')->withErrors(['You are already logged in.']);;
+    		return redirect('/webportal')->withErrors(['You are already logged in.']);;
     	}
 
 		return view('pages.login');
@@ -31,7 +31,7 @@ class LoginController extends Controller
     	}
 
     	if($request->session()->has('key') ){
-    		return redirect('/dashboard')->withErrors(['You are already logged in.']);;
+    		return redirect('/webportal')->withErrors(['You are already logged in.']);;
     	}
 
     	if(!$request->has('key')){
@@ -49,7 +49,7 @@ class LoginController extends Controller
     			$request->session()->put('key',$request->input('key'));
     			$request->session()->forget('admin');
 
-    			return redirect('/dashboard');
+    			return redirect('/webportal');
     		}else{
 				return redirect('/login')->withErrors(['No matches found for that access key. Please check your key and try again.']);
     		}

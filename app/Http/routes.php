@@ -88,6 +88,7 @@ Route::post('/admin/report/{id}/details',		'ReportController@saveReportDetails')
 Route::get( '/admin/report/{id}/summary',		'ReportController@editReportSummary');
 Route::post('/admin/report/{id}/summary',		'ReportController@saveReportSummary');
 Route::post('/admin/report/{id}/document',		'ReportController@addDocument');
+Route::get( '/admin/report/{id}/pass/{newkey}',	'ReportController@newKey');
 Route::get( '/admin/report/{reportid}/document/{id}/delete',	
 												'ReportController@deleteDocument');
 Route::get( '/admin/report/{reportid}/{id}',	'ReportController@editReportSection');
@@ -97,4 +98,5 @@ Route::get( '/admin/report/{reportid}/{secid}/image/{id}/delete',	'ReportControl
 
 
 
-Route::get( '/webportal/print/{id}',  	 'PortalController@printReport');
+Route::get( '/webportal/print/{id}',  	'PortalController@printReport');
+Route::get( '/webportal',				'PortalController@showReport');

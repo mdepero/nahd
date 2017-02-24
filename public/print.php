@@ -1,14 +1,22 @@
 <?php
 
 
-if(!isset($_SESSION['report_access']) || $_SESSION['report_access'] != $_REQUEST['report']){
-	die('<p>Sorry, for security reasons this page can only be accessed directly from your web portal and cannot be refreshed. Please go back to your <a href="/webportal">Web Portal</a> and open your report from there. Thank you.</p>');
-}
+// if(!isset($_SESSION['report_access']) || $_SESSION['report_access'] != $_REQUEST['report']){
+// 	die('<p>Sorry, for security reasons this page can only be accessed directly from your web portal and cannot be refreshed. Please go back to your <a href="/webportal">Web Portal</a> and open your report from there. Thank you.</p>');
+// }
 
-$_SESSION['report_access'] = "";
+// $_SESSION['report_access'] = "";
+
+
 
 
 require('pdf/fpdf.php');
+
+
+
+$GLOBALS['report'] = $report;
+
+
 
 class PDF extends FPDF
 {
@@ -27,11 +35,11 @@ function Header()
 	
 	$this->Cell(90,20,'',0,0,'C',false);
     $this->Cell(100,8,'NAHD Official Property Report',1,2,'R',true);
-	$this->Cell(100,8,"Another Address",1,2,'R',true);
-	$this->Cell(100,8,"Name".' '."Maybe?",1,2,'R',true);
+	$this->Cell(100,8,$GLOBALS['report']->paddress,1,2,'R',true);
+	$this->Cell(100,8,$GLOBALS['report']->fname.' '.$GLOBALS['report']->lname,1,2,'R',true);
 	
 	$this->SetFont('Arial','',11);
-	$this->Cell(100,6,"Not Sure",1,0,'R',true);
+	$this->Cell(100,6,date('F d, Y',strtotime($GLOBALS['report']->date_inspection)),1,0,'R',true);
 	$this->Ln();
 	
 	$this->SetTextColor(0,0,0);
@@ -56,53 +64,58 @@ function Footer()
 }
 
 
-function printImages($header,$form,$pdf){
+function printImages($section,$pdf){
 
-	$currentImages = scandir("uploads/".$_REQUEST['table']."/".$form);
-	if(sizeof($currentImages)>2){
-		$pdf->AddPage();
 
-		$pdf->SetFont('Arial','B',18);
+	if(count($section->images) <= 0) return;
 
-		$pdf->Cell(190,15,$header,0,1,'C');
 
-		$pdf->SetFont('Arial','',11);
+	$pdf->AddPage();
 
-		$x = 10;
-		$y = 70;
-		$col=0;
-		$row = 0;
-		foreach($currentImages as $value){
-			if($value!='.'&&$value!='..'){
-				$path = "uploads/".$_REQUEST['table']."/".$form."/".$value;
-				$imginfo = getimagesize($path);
-				$ytextoffset = 65;
-				if(($imginfo[0])>($imginfo[1])*1.5){
-					//width greater than (8/5)*height
-					$pdf->Image($path,$x,$y,90,'');
-					$ytextoffset = 5 + (90*($imginfo[1]/$imginfo[0]));
-				}
-				else{
-					$pdf->Image($path,$x,$y,'',60);
-				}
-				$pdf->Text($x+10,$y+$ytextoffset,str_replace('NOCAPTION','',str_replace('_',' ',str_replace('~', ' ', str_replace('.jpg','',str_replace('.jpeg','',str_replace('.png','',$value)))))));
-				$x += 100;
-				if(++$col==2){
-					$col=0;
-					$x=10;
-					$y+= 72;
-					$row++;
-				}
-				if($row==3){
-					$row=0;
-					$pdf->AddPage();
-					$x=10;
-					$y=70;
-				}
-			}
-		}//end foreach
-	}//end files found in folder
+	$pdf->SetFont('Arial','B',18);
+
+	$pdf->Cell(190,15,$section->fsection->label.' Images',0,1,'C');
+
+	$pdf->SetFont('Arial','',11);
+
+	$x = 10;
+	$y = 70;
+	$col=0;
+	$row = 0;
+	foreach($section->images as $image){
+		$path = substr($image->file_path, 1);
+		$imginfo = getimagesize($path);
+		$ytextoffset = 65;
+		if(($imginfo[0])>($imginfo[1])*1.5){
+			//width greater than (8/5)*height
+			$pdf->Image($path,$x,$y,90,'');
+			$ytextoffset = 5 + (90*($imginfo[1]/$imginfo[0]));
+		}
+		else{
+			$pdf->Image($path,$x,$y,'',60);
+		}
+		$pdf->Text($x+10,$y+$ytextoffset,$image->caption);
+		$x += 100;
+		if(++$col==2){
+			$col=0;
+			$x=10;
+			$y+= 72;
+			$row++;
+		}
+		if($row==3){
+			$row=0;
+			$pdf->AddPage();
+			$x=10;
+			$y=70;
+		}
+	}//end foreach
 }//end print images
+
+
+
+
+
+
 
 
 $pdf = new PDF();
@@ -131,25 +144,25 @@ $pdf->Cell(30,10,'Client ',0,0,'R');
 $pdf->SetFont('Arial','',11);
 
 $pdf->Cell(30,10,'Name: ','TL',0,'R');
-$pdf->Cell(70,10,"fName".' '."Lastname",'T',0,'L');
+$pdf->Cell(70,10,$report->fname.' '.$report->lname,'T',0,'L');
 $pdf->Cell(30,10,'Home Phone: ','T',0,'R');
-$pdf->Cell(30,10,"hPhone",'TR',1,'L');
+$pdf->Cell(30,10,$report->chome_phone,'TR',1,'L');
 
 $pdf->Cell(30,10,'',0,0,'R');
 $pdf->Cell(30,10,'Address: ','L',0,'R');
-$pdf->Cell(70,10,"aAddress",0,0,'L');
+$pdf->Cell(70,10,$report->caddress,0,0,'L');
 $pdf->Cell(30,10,'Mobile Phone: ',0,0,'R');
-$pdf->Cell(30,10,"mPhone",'R',1,'L');
+$pdf->Cell(30,10,$report->cmobile_phone,'R',1,'L');
 
 $pdf->Cell(30,10,'',0,0,'R');
 $pdf->Cell(30,10,'','L',0,'R');
-$pdf->Cell(70,10,"Not".', '."Really".' '."Sure...",0,0,'L');
-$pdf->Cell(30,10,'Business Phone: ',0,0,'R');
-$pdf->Cell(30,10,"busPhone",'R',1,'L');
+$pdf->Cell(70,10,$report->ccity.', '.$report->cstate.' '.$report->czip,0,0,'L');
+$pdf->Cell(30,10,'',0,0,'R');
+$pdf->Cell(30,10,"",'R',1,'L');
 
 $pdf->Cell(30,10,'',0,0,'R');
 $pdf->Cell(30,10,'Email: ','LB',0,'R');
-$pdf->Cell(70,10,"Email",'B',0,'L');
+$pdf->Cell(70,10,$report->email,'B',0,'L');
 $pdf->Cell(30,10,'','B',0,'R');
 $pdf->Cell(30,10,'','BR',1,'L');
 
@@ -161,15 +174,15 @@ $pdf->Cell(30,10,'Property ',0,0,'R');
 $pdf->SetFont('Arial','',11);
 
 $pdf->Cell(30,10,'Street: ','TL',0,'R');
-$pdf->Cell(70,10,"propAddress",'T',0,'L');
+$pdf->Cell(70,10,$report->paddress,'T',0,'L');
 $pdf->Cell(30,10,'State: ','T',0,'R');
-$pdf->Cell(30,10,"PropState",'TR',1,'L');
+$pdf->Cell(30,10,$report->pstate,'TR',1,'L');
 
 $pdf->Cell(30,10,'',0,0,'RB');
 $pdf->Cell(30,10,'City: ','LB',0,'R');
-$pdf->Cell(70,10,"PropCity?",'B',0,'L');
+$pdf->Cell(70,10,$report->pcity,'B',0,'L');
 $pdf->Cell(30,10,'Zip Code: ','B',0,'R');
-$pdf->Cell(30,10,"PropZip",'RB',1,'L');
+$pdf->Cell(30,10,$report->pzip,'RB',1,'L');
 
 
 $pdf->SetFont('Arial','B',15);
@@ -179,9 +192,9 @@ $pdf->Cell(30,10,'Inspection ',0,0,'R');
 $pdf->SetFont('Arial','',11);
 
 $pdf->Cell(30,10,'Date: ','TL',0,'R');
-$pdf->Cell(70,10,"InspectDate",'T',0,'L');
+$pdf->Cell(70,10,date('F d, Y',strtotime($report->date_inspection)),'T',0,'L');
 $pdf->Cell(30,10,'Time: ','T',0,'R');
-$pdf->Cell(30,10,"InspectTime",'TR',1,'L');
+$pdf->Cell(30,10,$report->time_inspection,'TR',1,'L');
 
 $pdf->Cell(30,10,'',0,0,'RB');
 $pdf->Cell(30,10,'Type: ','LB',0,'R');
@@ -302,17 +315,20 @@ $pdf->Ln(10);
 //BEGIN DATA
 
 // =========== LOOP SUMMARY ==============
+foreach($report->sections as $section){
 
 $pdf->SetFont('Arial','B',15);
 
-$pdf->Cell(30,15,'Roofing ',0,0,'R');
+$pdf->Cell(30,15,$section->fsection->label,0,0,'R');
 
 $pdf->SetFont('Arial','',13);
 $pdf->Cell(160,5,'','LTR',2,'L');
-$pdf->MultiCell(160,5,"These will be the summaries!",'LR','L');
+$pdf->MultiCell(160,5,$section->summary,'LR','L');
 $pdf->Cell(30,15,'',0,0,'R');
 $pdf->Cell(160,5,'','LBR',1,'L');
 
+
+}
 // ============= END LOOP SUMMARY ==================
 
 
@@ -321,7 +337,7 @@ $pdf->SetFont('Arial','B',15);
 
 $pdf->Cell(120,15,'Overall Rating (1-Worst, 10-Best): ',0,0,'R');
 $pdf->SetFont('Arial','',13);
-$pdf->Cell(30,15,"A rating",0,1,'L');
+$pdf->Cell(30,15,$report->rating,0,1,'L');
 
 
 
@@ -331,7 +347,7 @@ $pdf->Cell(30,13,'Final Notes ',0,0,'R');
 
 $pdf->SetFont('Arial','',13);
 $pdf->Cell(160,5,'','LTR',2,'L');
-$pdf->MultiCell(160,5,"SOme final notes",'LR','L');
+$pdf->MultiCell(160,5,$report->final_remarks,'LR','L');
 $pdf->Cell(30,15,'',0,0,'R');
 $pdf->Cell(160,5,'','LBR',1,'L');
 
@@ -340,11 +356,12 @@ $pdf->Cell(160,5,'','LBR',1,'L');
 
 
 // ====================== LOOP SECTIONS ====================================
+foreach($report->sections as $section){
 $pdf->AddPage();
 
 //HEADER
 $pdf->SetFont('Arial','B',25);
-$pdf->Cell(0,10,'Roofing',0,1,'L');
+$pdf->Cell(0,10,$section->fsection->label,0,1,'L');
 
 
 //HR
@@ -357,14 +374,16 @@ $pdf->Cell(0,15,'Description',0,1,'L');
 
 
 // ========== LOOP DESCRIPTION =========
+foreach($section->descriptions as $description){
 $pdf->SetFont('Arial','B',14);
-$pdf->Cell(58,11,'Roofing Materials ',0,0,'R');
+$pdf->Cell(58,11,$description->area->label,0,0,'R');
 $pdf->SetFont('Arial','',13);
 $pdf->Cell(132,3,'','LRT',2,'L');
-$pdf->MultiCell(132,5,"descript",'LR','L');
+$pdf->MultiCell(132,5,$description->value,'LR','L');
 $pdf->Cell(58,3,'',0,0,'L');
 $pdf->Cell(132,3,'','LRB',1,'L');
 
+}
 // ======== END LOOP DESCRIPTION ========
 
 $pdf->Ln(6);
@@ -377,7 +396,7 @@ $pdf->Cell(0,15,'Limitations to Report',0,1,'L');
 $pdf->SetFont('Arial','',12);
 $pdf->Cell(30,3,'',0,0,'R');
 $pdf->Cell(160,3,'','LTR',2,'L');
-$pdf->MultiCell(160,5,"Our limitations go here",'LR','L');
+$pdf->MultiCell(160,5,$section->limitations,'LR','L');
 $pdf->Cell(30,3,'',0,0,'R');
 $pdf->Cell(160,3,'','LBR',1,'L');
 
@@ -395,23 +414,32 @@ $pdf->Cell(47,5,'Location',0,0,'C');
 $pdf->Cell(47,5,'Urgency',0,1,'C');
 
 // ====== LOOP CONCERNS ==========
+$area = -1;
+foreach($section->concerns as $concern){
+if($concern->area->id == $area)
+	continue;
+else
+	$area = $concern->area->id;
 $pdf->SetFont('Arial','B',14);
-$pdf->Cell(49,8,'Roof ',0,0,'R');//CHANGE LABEL
+$pdf->Cell(49,8,$concern->area->label,0,0,'R');
 $pdf->SetFont('Arial','',10);
 $int=0;
 $first=true;
-	//foreach($data[$form][$id] as $entry)
-	//{
-		//if(!$first)
+	foreach($section->concerns as $concern)
+	{
+		if($concern->area->id != $area)
+			continue;
+		if(!$first)
 			$pdf->Cell(49,8,'',0,0,'R');
-		$pdf->Cell(47,8,"Concern Thing",1,0,'C');
-		$pdf->Cell(47,8,"Two",1,0,'C');
-		$pdf->Cell(47,8,"Three",1,1,'C');
-		//$first=false;
+		$pdf->Cell(47,8,$concern->item,1,0,'C');
+		$pdf->Cell(47,8,$concern->location,1,0,'C');
+		$pdf->Cell(47,8,$concern->urgency,1,1,'C');
+		$first=false;
 		//$int++;
-	//}
-//}
+	}
 
+
+}
 // ======= END LOOP CONCERNS
 
 $pdf->Ln(6);
@@ -424,20 +452,22 @@ $pdf->Cell(0,15,'Section Notes',0,1,'L');
 $pdf->SetFont('Arial','',12);
 $pdf->Cell(30,3,'',0,0,'R');
 $pdf->Cell(160,3,'','LTR',2,'L');
-$pdf->MultiCell(160,5,"Some good ole section ntoes",'LR','L');
+$pdf->MultiCell(160,5,$section->notes,'LR','L');
 $pdf->Cell(30,3,'',0,0,'R');
 $pdf->Cell(160,3,'','LBR',1,'L');
 
 
 
-//printImages('Roofing Report Images',$form,$pdf);
+printImages($section,$pdf);
 
 
+
+}
 // ============================== END SECTION LOOP ==================================
 
 
 
-$pdf->Output();
+///$pdf->Output();
 
 
 

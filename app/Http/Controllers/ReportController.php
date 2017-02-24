@@ -77,6 +77,13 @@ class ReportController extends Controller
 
     	$report = Report::find($id);
 
+
+        if($report->access_key == ""){
+
+            $report->access_key = preg_replace("/\D/", "", $request->paddress).$request->lname;
+        }
+
+
     	$report->fill($request->all());
 
     	$report->save();
@@ -127,6 +134,18 @@ class ReportController extends Controller
     	$possible_concern_areas = FConcernArea::where('f_section_id',$section->fsection->id)->get();
 
     	return view('admin.edit-report-section', compact('section', 'possible_concern_areas'));
+    }
+
+
+    public function newKey($id, $newkey){
+
+        $report = Report::find($id);
+
+        $report->access_key = $newkey;
+
+        $report->save();
+
+        return redirect('/admin/report/'.$id);
     }
 
 
@@ -268,7 +287,7 @@ class ReportController extends Controller
             $file = $request->file('file');
             //$filename = $file->getClientOriginalName();
             $extension = $file->getClientOriginalExtension();
-            $upload = date('Y-m-d').'-'.str_replace(' ', '', $request->caption).'.'.$extension;
+            $upload = date('Y-m-d').'-'.str_replace(' ', '', $request->caption).'_'.$id.'.'.$extension;
             $destinationPath = 'uploads';
             $file->move($destinationPath, $upload);
             
