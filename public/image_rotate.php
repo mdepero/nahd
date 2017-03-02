@@ -20,6 +20,11 @@ function image_fix_orientation($filename) {
         }
 
         imagejpeg($image, $filename, 60);
+    }else{
+
+        // reduce size anyway
+        $image = imagecreatefromjpeg($filename);
+        imagejpeg($image, $filename, 60);
     }
 }
 
