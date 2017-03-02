@@ -319,7 +319,11 @@ foreach($report->sections as $section){
 
 $pdf->SetFont('Arial','B',15);
 
-$pdf->Cell(30,15,$section->fsection->label,0,0,'R');
+$sec_title = $section->fsection->label;
+if($sec_title == "Cooling/Head Pump"){
+	$sec_title = "Cooling";
+}
+$pdf->Cell(30,15,$sec_title,0,0,'R');
 
 $pdf->SetFont('Arial','',13);
 $pdf->Cell(160,5,'','LTR',2,'L');
@@ -429,10 +433,19 @@ $first=true;
 	{
 		if($concern->area->id != $area)
 			continue;
+		$pdf->SetFont('Arial','',10);
 		if(!$first)
 			$pdf->Cell(49,8,'',0,0,'R');
+		if(strlen($concern->item) > 40)
+			$pdf->SetFont('Arial','',7);
 		$pdf->Cell(47,8,$concern->item,1,0,'C');
+		$pdf->SetFont('Arial','',10);
+		if(strlen($concern->location) > 40)
+			$pdf->SetFont('Arial','',7);
 		$pdf->Cell(47,8,$concern->location,1,0,'C');
+		$pdf->SetFont('Arial','',10);
+		if(strlen($concern->item) > 40)
+			$pdf->SetFont('Arial','',7);
 		$pdf->Cell(47,8,$concern->urgency,1,1,'C');
 		$first=false;
 		//$int++;
