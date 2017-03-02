@@ -436,15 +436,15 @@ $first=true;
 		$pdf->SetFont('Arial','',10);
 		if(!$first)
 			$pdf->Cell(49,8,'',0,0,'R');
-		if(strlen($concern->item) > 30)
+		if(strlen($concern->item) > 28)
 			$pdf->SetFont('Arial','',7);
 		$pdf->Cell(47,8,$concern->item,1,0,'C');
 		$pdf->SetFont('Arial','',10);
-		if(strlen($concern->location) > 30)
+		if(strlen($concern->location) > 28)
 			$pdf->SetFont('Arial','',7);
 		$pdf->Cell(47,8,$concern->location,1,0,'C');
 		$pdf->SetFont('Arial','',10);
-		if(strlen($concern->item) > 30)
+		if(strlen($concern->item) > 28)
 			$pdf->SetFont('Arial','',7);
 		$pdf->Cell(47,8,$concern->urgency,1,1,'C');
 		$first=false;
