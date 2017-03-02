@@ -444,7 +444,7 @@ $first=true;
 			$pdf->SetFont('Arial','',7);
 		$pdf->Cell(47,8,$concern->location,1,0,'C');
 		$pdf->SetFont('Arial','',10);
-		if(strlen($concern->item) > 28)
+		if(strlen($concern->urgency) > 28)
 			$pdf->SetFont('Arial','',7);
 		$pdf->Cell(47,8,$concern->urgency,1,1,'C');
 		$first=false;
