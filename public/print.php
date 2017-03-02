@@ -426,7 +426,7 @@ else
 	$area = $concern->area->id;
 $pdf->SetFont('Arial','B',14);
 $pdf->Cell(49,8,$concern->area->label,0,0,'R');
-$pdf->SetFont('Arial','',10);
+$pdf->SetFont('Arial','',5);
 $int=0;
 $first=true;
 	foreach($section->concerns as $concern)
