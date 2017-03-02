@@ -433,7 +433,7 @@ $first=true;
 	{
 		if($concern->area->id != $area)
 			continue;
-		$pdf->SetFont('Arial','',10);
+		$pdf->SetFont('Arial','',5);
 		if(!$first)
 			$pdf->Cell(49,8,'',0,0,'R');
 		if(strlen($concern->item) > 40)
