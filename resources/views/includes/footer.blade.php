@@ -13,11 +13,11 @@
                         <!-- Social Media -->
                         <ul class="social">
                             <li>
-                                <a href="http://wwww.fb.com/themefisher" class="Facebook">
+                                <a href="https://www.facebook.com/newagehomedetectives/" class="Facebook">
                                     <i class="ion-social-facebook"></i>
                                 </a>
                             </li>
-                            <li>
+                            <!--li>
                                 <a href="http://wwww.twitter.com/themefisher" class="Twitter">
                                     <i class="ion-social-twitter"></i>
                                 </a>
@@ -31,7 +31,7 @@
                                 <a href="http://wwww.fb.com/themefisher" class="Google Plus">
                                     <i class="ion-social-googleplus"></i>
                                 </a>
-                            </li>
+                            </li-->
                         </ul>
                     </div>
                 </div>

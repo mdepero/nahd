@@ -28,16 +28,20 @@
 
                                 <table class="table table-striped">
                                     <tr>
-                                        <td>Standard home inspection</td>
+                                        <td>Standard Home Inspection</td>
                                         <td>$350</td>
                                     </tr>
                                     <tr>
-                                        <td>52-72 hour radon test</td>
+                                        <td>52-72 Hour Radon Test</td>
                                         <td>$125</td>
                                     </tr>
                                     <tr>
-                                        <td>Wood destroying insect (termite) inspection</td>
+                                        <td>Wood Destroying Insect (Termite) Inspection</td>
                                         <td>$75</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Thermal Inspection</td>
+                                        <td>$50</td>
                                     </tr>
                                 </table>
                             </div>
@@ -51,7 +55,7 @@
                                 Tools and Methods
                                 </h2>
                                 <p>
-                                    We adhere strictly to the inspection practices laid out by the American Society of Home Inspectors (ASHI). Visit <a href="http://www.homeinspector.org/standards/default.aspx" target="_BLANK">homeinspector.org/standards/default.aspx</a> to read more.
+                                    We adhere strictly to the inspection practices laid out by the American Society of Home Inspectors (ASHI). Visit <a href="http://www.homeinspector.org/Introduction" target="_BLANK">homeinspector.org/Introduction</a> to read more.
                                 </p>
                                 <p>
                                     We utilize the most precise and technologically accurate tools available in our field ranging from radon detection devices, combustible gas detectors, and moisture meters. We will employ each device during your inspection to help eliminate as much guess work as possible.
