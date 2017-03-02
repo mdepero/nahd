@@ -13,7 +13,7 @@
                         <!-- Social Media -->
                         <ul class="social">
                             <li>
-                                <a href="https://www.facebook.com/newagehomedetectives/" class="Facebook">
+                                <a href="https://www.facebook.com/newagehomedetectives/" class="Facebook" target=_"BLANK">
                                     <i class="ion-social-facebook"></i>
                                 </a>
                             </li>

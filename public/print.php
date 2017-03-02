@@ -320,8 +320,9 @@ foreach($report->sections as $section){
 $pdf->SetFont('Arial','B',15);
 
 $sec_title = $section->fsection->label;
-if($sec_title == "Cooling/Head Pump"){
+if($sec_title == "Cooling/Heat Pump"){
 	$sec_title = "Cooling";
+	die($sec_title);
 }
 $pdf->Cell(30,15,$sec_title,0,0,'R');
 
