@@ -16,6 +16,9 @@ use App\Concern;
 use App\Image;
 use App\Document;
 
+
+
+
 class ReportController extends Controller
 {
 
@@ -242,11 +245,16 @@ class ReportController extends Controller
         if ($request->hasFile('image')) {
 
             $image = $request->file('image');
-            $filename = '_'.$reportid.'_'.$id.'_'.str_replace(' ', '', $request->caption);
+            $filename = $reportid.'_'.$id.'_'.str_replace(' ', '', $request->caption);
             $extension = $image->getClientOriginalExtension();
-            $picture = date('His').$filename.'.'.$extension;
+            $picture = $filename.'_'.date('His').'.'.$extension;
             $destinationPath = 'uploads';
             $image->move($destinationPath, $picture);
+
+            require(public_path('image_rotate.php'));
+
+            // fix rotation issues with phones that only edit exif data and don't actually rotate the image
+            image_fix_orientation($destinationPath.'/'.$picture);
             
             $newImage = new Image;
 
