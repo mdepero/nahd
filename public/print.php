@@ -426,26 +426,26 @@ else
 	$area = $concern->area->id;
 $pdf->SetFont('Arial','B',14);
 $pdf->Cell(49,8,$concern->area->label,0,0,'R');
-$pdf->SetFont('Arial','',5);
+$pdf->SetFont('Arial','',10);
 $int=0;
 $first=true;
 	foreach($section->concerns as $concern)
 	{
 		if($concern->area->id != $area)
 			continue;
-		$pdf->SetFont('Arial','',5);
+		$pdf->SetFont('Arial','',10);
 		if(!$first)
 			$pdf->Cell(49,8,'',0,0,'R');
 		if(strlen($concern->item) > 40)
-			$pdf->SetFont('Arial','',5);
+			$pdf->SetFont('Arial','',7);
 		$pdf->Cell(47,8,$concern->item,1,0,'C');
 		$pdf->SetFont('Arial','',10);
 		if(strlen($concern->location) > 40)
-			$pdf->SetFont('Arial','',5);
+			$pdf->SetFont('Arial','',7);
 		$pdf->Cell(47,8,$concern->location,1,0,'C');
 		$pdf->SetFont('Arial','',10);
 		if(strlen($concern->item) > 40)
-			$pdf->SetFont('Arial','',5);
+			$pdf->SetFont('Arial','',7);
 		$pdf->Cell(47,8,$concern->urgency,1,1,'C');
 		$first=false;
 		//$int++;
