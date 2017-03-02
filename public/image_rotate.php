@@ -19,7 +19,7 @@ function image_fix_orientation($filename) {
                 break;
         }
 
-        imagejpeg($image, $filename, 90);
+        imagejpeg($image, $filename, 60);
     }
 }
 
